@@ -1,27 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <div>
+    <Navbar></Navbar>
+    <div class="container" style="margin-top: 70px">
+      <h1>Ponyracer</h1>
+    </div>
+    <div><PonyRaces></PonyRaces></div>
+  </div>
 </template>
 
 <script lang="ts">
+import Navbar from "@/components/Navbar.vue";
+import PonyRaces from "@/views/PonyRaces.vue";
 import { defineComponent } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
 
 export default defineComponent({
   name: "App",
+
   components: {
-    HelloWorld,
+    Navbar: Navbar,
+    PonyRaces: PonyRaces,
   },
 });
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.min.css";
 </style>

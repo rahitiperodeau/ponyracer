@@ -1,6 +1,5 @@
-/* eslint-disable */
-declare module '*.vue' {
-  import type { DefineComponent } from 'vue'
-  const component: DefineComponent<{}, {}, any>
-  export default component
+declare module "*.vue" {
+  import { defineComponent } from "vue";
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  export default defineComponent({ props: {} as any });
 }
