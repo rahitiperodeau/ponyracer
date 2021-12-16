@@ -2,15 +2,21 @@
   <div>
     <Navbar></Navbar>
     <div>
-      <Home></Home>
-      <Alert dismissible @dismissed="error = false" variant="alert alert-danger"  v-if="error">
-        An error occurred while loading.
-      </Alert>
+      <RouterView v-slot="{ Component }">
+        <Alert
+          dismissible
+          @dismissed="error = false"
+          variant="alert alert-danger"
+          v-if="error"
+        >
+          An error occurred while loading.
+        </Alert>
+        <Suspense v-else>
+          <component :is="Component" />
+          <template #fallback>Loading, be patient...</template>
+        </Suspense>
+      </RouterView>
 
-      <!-- <Suspense v-else>
-        <Races></Races>
-        <template #fallback>Loading, be patient...</template>
-      </Suspense> -->
     </div>
   </div>
 </template>
@@ -19,14 +25,13 @@
 import Navbar from "@/components/Navbar.vue";
 import Races from "@/views/Races.vue";
 import Home from "@/components/Home.vue";
-import { defineComponent,ref,onErrorCaptured } from "vue";
+import { defineComponent, ref, onErrorCaptured } from "vue";
 
 export default defineComponent({
   name: "App",
 
   components: {
     Navbar: Navbar,
-    Home: Home
   },
 
   setup() {
@@ -35,10 +40,10 @@ export default defineComponent({
     onErrorCaptured(() => {
       error.value = true;
       return false;
-    })
+    });
 
-    return{error}
-  }
+    return { error };
+  },
 });
 </script>
 
