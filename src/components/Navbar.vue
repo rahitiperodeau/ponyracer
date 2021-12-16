@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-light bg-light">
-    <a class="navbar-brand">PonyRacer</a>
+    <RouterLink class="navbar-brand" to="/">PonyRacer</RouterLink>
     <button v-on:click="toggleNavbar()" type="button" class="navbar-toggler">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -11,7 +11,7 @@
     >
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link">Races</a>
+          <RouterLink to="/races" class="nav-link">Races</RouterLink>
         </li>
       </ul>
     </div>

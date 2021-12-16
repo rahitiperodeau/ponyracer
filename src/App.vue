@@ -1,25 +1,44 @@
 <template>
   <div>
     <Navbar></Navbar>
-    <div class="container" style="margin-top: 70px">
-      <h1>Ponyracer</h1>
+    <div>
+      <Home></Home>
+      <Alert dismissible @dismissed="error = false" variant="alert alert-danger"  v-if="error">
+        An error occurred while loading.
+      </Alert>
+
+      <!-- <Suspense v-else>
+        <Races></Races>
+        <template #fallback>Loading, be patient...</template>
+      </Suspense> -->
     </div>
-    <div><PonyRaces></PonyRaces></div>
   </div>
 </template>
 
 <script lang="ts">
 import Navbar from "@/components/Navbar.vue";
-import PonyRaces from "@/views/PonyRaces.vue";
-import { defineComponent } from "vue";
+import Races from "@/views/Races.vue";
+import Home from "@/components/Home.vue";
+import { defineComponent,ref,onErrorCaptured } from "vue";
 
 export default defineComponent({
   name: "App",
 
   components: {
     Navbar: Navbar,
-    PonyRaces: PonyRaces,
+    Home: Home
   },
+
+  setup() {
+    const error = ref(false);
+
+    onErrorCaptured(() => {
+      error.value = true;
+      return false;
+    })
+
+    return{error}
+  }
 });
 </script>
 
