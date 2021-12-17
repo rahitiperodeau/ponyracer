@@ -5,7 +5,7 @@
       v-if="dismissible"
       @click="dismiss()"
       type="button"
-      class="close"
+      class="close mx-2 float-right"
       aria-label="Close"
     >
       <span aria-hidden="true">&#215;</span>

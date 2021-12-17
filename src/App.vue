@@ -16,7 +16,6 @@
           <template #fallback>Loading, be patient...</template>
         </Suspense>
       </RouterView>
-
     </div>
   </div>
 </template>
